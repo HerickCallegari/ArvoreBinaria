@@ -125,25 +125,21 @@ int AlturaArvore(pDArvore arvore) {
 
 // ---------------------- Remove ----------------------------------------------------
 pNohArvore removeInfoRecursivo(pNohArvore raiz, void* info, FuncaoComparacao fcp){
-    printf("procura alguma coisa");
     //caso a raiz seja nula
     if (raiz == NULL) {
-            printf("\nnulo\n");
+            printf("\nNulo\n");
         return NULL;
     }
 
     if ( raiz->esquerda != NULL && fcp(info, raiz->info) < 0 ) {
-            printf("\n Procura esquerda\n");
         raiz->esquerda = removeInfoRecursivo(raiz->esquerda, info, fcp);
     }
     else if ( raiz->direita != NULL && fcp(info, raiz->info ) > 0 ) {
-            printf("\n Procura direita\n");
         raiz->direita = removeInfoRecursivo(raiz->direita, info, fcp);
     }
     // Primeiro caso: se o nó encontrado é uma folha
 
     if (fcp(raiz->info, info) == 0 && isLeaf(raiz) == 1 ) {
-            printf("\nAchou: ");
             printaInt(raiz->info);
                     /*
                     desc
@@ -160,16 +156,13 @@ pNohArvore removeInfoRecursivo(pNohArvore raiz, void* info, FuncaoComparacao fcp
 
                     */
         freeNoh(raiz);
-        printf("\n REMOVIDO COM SUCESSO!!\n");
         return NULL;
     }
 
     // se o nó nao é folha
     if ( fcp(raiz->info, info) == 0 && isLeaf(raiz) == 0) {
-        printf("\nremove nao folha\n");
             // caso 3: é uma raiz com 2 filhos
         if ( raiz->direita != NULL && raiz->esquerda != NULL) {
-                printf("\nremover principal\n");
                 /*
                     desc
                       |
@@ -190,6 +183,21 @@ pNohArvore removeInfoRecursivo(pNohArvore raiz, void* info, FuncaoComparacao fcp
             pNohArvore preNewRoot = raiz->esquerda;
             pNohArvore newRoot = preNewRoot;
 
+            while (newRoot->direita != NULL) {
+                preNewRoot = newRoot;
+                newRoot = newRoot->direita;
+            }
+
+            if ( newRoot != preNewRoot && newRoot->esquerda != NULL ) {
+                preNewRoot->direita = newRoot->esquerda;
+                newRoot->direita = raiz->direita;
+                newRoot->esquerda = raiz->esquerda;
+            }
+
+            if( newRoot == preNewRoot) {
+                newRoot->direita = raiz->direita;
+            }
+            /*
             //para teste
             printf("\npreNewRoot: ");
             printaInt(preNewRoot->info);
@@ -198,35 +206,17 @@ pNohArvore removeInfoRecursivo(pNohArvore raiz, void* info, FuncaoComparacao fcp
             printf("raiz: ");
             printaInt(raiz->info);
             printf("\n");
-
-            while (newRoot->direita != NULL) {
-                    printf("sexo");
-                preNewRoot = newRoot;
-                newRoot = newRoot->direita;
-            }
-
-            if ( newRoot != preNewRoot && newRoot->esquerda != NULL ) {
-                    printf("penis");
-                preNewRoot->direita = newRoot->esquerda;
-            }
-
-            if( newRoot == preNewRoot) {
-                printf("triste");
-                newRoot->direita = raiz->direita;
-            }
-
-            newRoot->esquerda = raiz->direita;
-            newRoot->esquerda = raiz->esquerda;
+            */
             raiz->direita = NULL;
             raiz->esquerda = NULL;
             free(raiz);
 
             return newRoot;
+
         }
 
         // caso 2: é uma raiz com 1 filho
         else if (raiz->direita != NULL && raiz->esquerda == NULL) {
-                printf("\nremover direita\n");
                     /*
                     desc
                      |
@@ -250,7 +240,6 @@ pNohArvore removeInfoRecursivo(pNohArvore raiz, void* info, FuncaoComparacao fcp
 
         // caso 2: é uma raiz com 1 filho
         else if (raiz->direita == NULL && raiz->esquerda != NULL) {
-                printf("\nremover esquerda\n");
                      /*
                     desc
                      |
@@ -280,9 +269,11 @@ pNohArvore removeInfoRecursivo(pNohArvore raiz, void* info, FuncaoComparacao fcp
 }
 
 int removeInfo(pDArvore arvore, void* info, FuncaoComparacao fcp) {
+    if ( findBy(arvore, info, fcp) == NULL)
+    return 0;
+    else
     arvore->raiz = removeInfoRecursivo(arvore->raiz, info, fcp);
-
-return 1;
+    return 1;
 }
 // ---------------------- FindBy ----------------------------------------------------
 
@@ -316,10 +307,8 @@ pNohArvore findByRecursivo(pNohArvore raiz, void* info, FuncaoComparacao fcp) {
     }
 
     pNohArvore prox = proxLeaf(raiz, info, fcp);
-    if (prox == NULL) {
-        printf("ERRO\n");
-    }
-        return findByRecursivo(prox, info, fcp);
+
+    return findByRecursivo(prox, info, fcp);
 
 }
 

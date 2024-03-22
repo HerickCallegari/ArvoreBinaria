@@ -28,7 +28,7 @@ int main()
 
 
 
-    printf("\nFoi possivel fazer a operacao: %d\n",removeInfo(desc, alocaInt(-3), ComInt));
+    printf("\nFoi possivel fazer a operacao: %d\n",removeInfo(desc, alocaInt(1), ComInt));
     printf("\n");
 
     imprimeArvore(desc, printaInt);

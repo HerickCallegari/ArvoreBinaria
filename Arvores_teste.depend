@@ -1,10 +1,10 @@
 # depslib dependency file v1.0
-1711068732 source:c:\users\zenop\onedrive\햞ea de trabalho\coisas do c\arvores\arvores_teste\main.c
+1711079571 source:c:\users\zenop\onedrive\햞ea de trabalho\coisas do c\arvores\arvores_teste\main.c
 	<stdio.h>
 	<stdlib.h>
 	"Arvores_Binarias.h"
 
-1711068912 c:\users\zenop\onedrive\햞ea de trabalho\coisas do c\arvores\arvores_teste\arvores_binarias.h
+1711079623 c:\users\zenop\onedrive\햞ea de trabalho\coisas do c\arvores\arvores_teste\arvores_binarias.h
 	"Util.h"
 
 1711064343 c:\users\zenop\onedrive\햞ea de trabalho\coisas do c\arvores\arvores_teste\util.h

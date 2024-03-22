@@ -16,6 +16,8 @@ int main()
     */
     incluirInfo(desc,alocaInt(0),ComInt);
     incluirInfo(desc,alocaInt(1),ComInt);
+    incluirInfo(desc,alocaInt(2),ComInt);
+    incluirInfo(desc,alocaInt(3),ComInt);
     incluirInfo(desc,alocaInt(-5),ComInt);
     incluirInfo(desc,alocaInt(-6),ComInt);
     incluirInfo(desc,alocaInt(-3),ComInt);
@@ -26,7 +28,7 @@ int main()
 
 
 
-    //printf("\nFoi possivel fazer a operacao: %d\n",removeInfo(desc, alocaInt(0), ComInt));
+    printf("\nFoi possivel fazer a operacao: %d\n",removeInfo(desc, alocaInt(-3), ComInt));
     printf("\n");
 
     imprimeArvore(desc, printaInt);

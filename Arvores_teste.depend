@@ -1,0 +1,78 @@
+# depslib dependency file v1.0
+1711068732 source:c:\users\zenop\onedrive\햞ea de trabalho\coisas do c\arvores\arvores_teste\main.c
+	<stdio.h>
+	<stdlib.h>
+	"Arvores_Binarias.h"
+
+1711068912 c:\users\zenop\onedrive\햞ea de trabalho\coisas do c\arvores\arvores_teste\arvores_binarias.h
+	"Util.h"
+
+1711064343 c:\users\zenop\onedrive\햞ea de trabalho\coisas do c\arvores\arvores_teste\util.h
+
+1709834533 source:c:\users\zenop\onedrive\햞ea de trabalho\coisas do c\arvores\lista\exemplolistainteiros.c
+	<stdio.h>
+	<stdlib.h>
+	"Utils.h"
+	"Lista.h"
+
+1709834534 c:\users\zenop\onedrive\햞ea de trabalho\coisas do c\arvores\lista\utils.h
+	<stdio.h>
+
+1709834534 c:\users\zenop\onedrive\햞ea de trabalho\coisas do c\arvores\lista\lista.h
+	"TAD_ListaLinear.h"
+	"Operacoes/0_structs.h"
+	"Operacoes/1_criarLista.h"
+	"Operacoes/2_incluirInfo.h"
+	"Operacoes/2_1_incluirInfoInicio.h"
+	"Operacoes/2_2_incluirInfoMeio.h"
+	"Operacoes/3_excluirInfo.h"
+	"Operacoes/3_1_excluirInfoPos.h"
+	"Operacoes/4_contemInfo.h"
+	"Operacoes/5_imprimirLista.h"
+	"Operacoes/6_destruirLista.h"
+	"Operacoes/7_duplicarLista.h"
+	"Operacoes/8_dividirLista.h"
+	"Operacoes/13_unirListas.h"
+	"Operacoes/9_buscarNohInfo.h"
+	"Operacoes/10_buscarInfoPos.h"
+
+1709834534 c:\users\zenop\onedrive\햞ea de trabalho\coisas do c\arvores\lista\tad_listalinear.h
+
+1709834534 c:\users\zenop\onedrive\햞ea de trabalho\coisas do c\arvores\lista\operacoes\0_structs.h
+
+1709834534 c:\users\zenop\onedrive\햞ea de trabalho\coisas do c\arvores\lista\operacoes\1_criarlista.h
+	"0_structs.h"
+
+1709834534 c:\users\zenop\onedrive\햞ea de trabalho\coisas do c\arvores\lista\operacoes\2_incluirinfo.h
+
+1709834534 c:\users\zenop\onedrive\햞ea de trabalho\coisas do c\arvores\lista\operacoes\2_1_incluirinfoinicio.h
+
+1709834534 c:\users\zenop\onedrive\햞ea de trabalho\coisas do c\arvores\lista\operacoes\2_2_incluirinfomeio.h
+
+1709834534 c:\users\zenop\onedrive\햞ea de trabalho\coisas do c\arvores\lista\operacoes\3_excluirinfo.h
+
+1709834534 c:\users\zenop\onedrive\햞ea de trabalho\coisas do c\arvores\lista\operacoes\3_1_excluirinfopos.h
+
+1709834534 c:\users\zenop\onedrive\햞ea de trabalho\coisas do c\arvores\lista\operacoes\4_conteminfo.h
+
+1709834534 c:\users\zenop\onedrive\햞ea de trabalho\coisas do c\arvores\lista\operacoes\5_imprimirlista.h
+
+1709834534 c:\users\zenop\onedrive\햞ea de trabalho\coisas do c\arvores\lista\operacoes\6_destruirlista.h
+
+1709834534 c:\users\zenop\onedrive\햞ea de trabalho\coisas do c\arvores\lista\operacoes\7_duplicarlista.h
+
+1709834534 c:\users\zenop\onedrive\햞ea de trabalho\coisas do c\arvores\lista\operacoes\8_dividirlista.h
+
+1709834534 c:\users\zenop\onedrive\햞ea de trabalho\coisas do c\arvores\lista\operacoes\13_unirlistas.h
+
+1709834534 c:\users\zenop\onedrive\햞ea de trabalho\coisas do c\arvores\lista\operacoes\9_buscarnohinfo.h
+
+1709834534 c:\users\zenop\onedrive\햞ea de trabalho\coisas do c\arvores\lista\operacoes\10_buscarinfopos.h
+
+1709834533 source:c:\users\zenop\onedrive\햞ea de trabalho\coisas do c\arvores\lista\exemplolistastruct.c
+	<stdio.h>
+	"Utils.h"
+	"Lista.h"
+
+1710435656 source:c:\users\zenop\onedrive\햞ea de trabalho\coisas do c\arvores\lista\noh.c
+

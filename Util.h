@@ -14,7 +14,7 @@ int* alocaInt(int n){
 
 void printaInt(void* info) {
     int* numero = (int*)info;
-    printf("%d\n", *numero);
+    printf("%d", *numero);
 }
 
 

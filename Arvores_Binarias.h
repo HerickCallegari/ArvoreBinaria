@@ -87,17 +87,17 @@ void incluirInfo(pDArvore arvore, void* info, FuncaoComparacao fcp) {
 void imprimeArvoreRecursiva(pNohArvore raiz, FuncaoImpressao fip ) {
     fip(raiz->info);
     if (raiz ->direita != NULL) {
-            printf("Direita %d: ", AlturaArvoreRecursiva(raiz));
+            printf(", ");
         imprimeArvoreRecursiva(raiz->direita, fip);
     }
     if (raiz->esquerda != NULL) {
-         printf("Esquerda %d: ", AlturaArvoreRecursiva(raiz));
+         printf(", ", AlturaArvoreRecursiva(raiz));
         imprimeArvoreRecursiva(raiz->esquerda, fip);
     }
 }
 
 void imprimeArvore ( pDArvore arvore, FuncaoImpressao fip ) {
-    printf("Raiz Principal: ");
+    printf("Arvore: ");
     imprimeArvoreRecursiva(arvore->raiz, fip);
 }
 

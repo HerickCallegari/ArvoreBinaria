@@ -263,17 +263,17 @@ pNohArvore removeInfoRecursivo(pNohArvore raiz, void* info, FuncaoComparacao fcp
         else { printf("ERRO GRAVE!!!!");}
     }
 
-
-
     return raiz;
 }
 
 int removeInfo(pDArvore arvore, void* info, FuncaoComparacao fcp) {
-    if ( findBy(arvore, info, fcp) == NULL)
-    return 0;
-    else
-    arvore->raiz = removeInfoRecursivo(arvore->raiz, info, fcp);
-    return 1;
+    if ( findBy(arvore, info, fcp) == NULL) {
+        return 0;
+    } else {
+        arvore->raiz = removeInfoRecursivo(arvore->raiz, info, fcp);
+        arvore->quantidade--;
+        return 1;
+    }
 }
 // ---------------------- FindBy ----------------------------------------------------
 

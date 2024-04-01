@@ -1,4 +1,4 @@
-int ComInt(void* info1, void* info2) {
+int CompInt(void* info1, void* info2) {
 
     int* inteiro1 = (int*)info1;
     int* inteiro2 = (int*)info2;

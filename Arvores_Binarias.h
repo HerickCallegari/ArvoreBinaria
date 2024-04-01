@@ -125,149 +125,72 @@ int AlturaArvore(pDArvore arvore) {
 
 // ---------------------- Remove ----------------------------------------------------
 pNohArvore removeInfoRecursivo(pNohArvore raiz, void* info, FuncaoComparacao fcp){
-    //caso a raiz seja nula
-    if (raiz == NULL) {
-            printf("\nNulo\n");
-        return NULL;
-    }
-
-    if ( raiz->esquerda != NULL && fcp(info, raiz->info) < 0 ) {
-        raiz->esquerda = removeInfoRecursivo(raiz->esquerda, info, fcp);
-    }
-    else if ( raiz->direita != NULL && fcp(info, raiz->info ) > 0 ) {
+    //procura o Noh que se quer remover
+    if ( fcp(info, raiz->info) > 0)
         raiz->direita = removeInfoRecursivo(raiz->direita, info, fcp);
-    }
-    // Primeiro caso: se o nó encontrado é uma folha
+    else if ( fcp(info, raiz->info) < 0)
+        raiz->esquerda = removeInfoRecursivo(raiz->esquerda, info, fcp);
+    else {
+            //encontrou o noh
+        printaInt(raiz->info);
+        if ( isLeaf(raiz) == 1) { //caso nao tenha filhos
+            freeNoh(raiz);
+            return NULL;
+        }
+        else if ( raiz->direita != NULL && raiz->esquerda != NULL ) { //caso tenha 2 filhos
+                // Funcao para encontrar o noh mais proximo da raiz desejada
+            pNohArvore preNewRoot = preMaxNoh(raiz);
+            pNohArvore newRoot = preNewRoot->direita;
 
-    if (fcp(raiz->info, info) == 0 && isLeaf(raiz) == 1 ) {
-            printaInt(raiz->info);
-                    /*
-                    desc
-                     |
-                      0
-                    /   \
-                  -5     1
-                  / \     \
-                -6  -3     3
-                    / \   /
-                  -4  -1 2
-                       /
-                      -2 <- esse por exemplo
-
-                    */
-        freeNoh(raiz);
-        return NULL;
-    }
-
-    // se o nó nao é folha
-    if ( fcp(raiz->info, info) == 0 && isLeaf(raiz) == 0) {
-            // caso 3: é uma raiz com 2 filhos
-        if ( raiz->direita != NULL && raiz->esquerda != NULL) {
-                /*
-                    desc
-                      |
-                      0 <- esse por exemplo
-                    /   \
-                  -5     1
-                  / \     \
-                -6  -3<PNR 2
-                    / \     \
-                  -4  -1<NR  3
-                       /
-                      -2
-                Neste caso o ideal é procurar o nó mais proximo desta raiz com 2 filhos
-                que por padrao deifinimos que sera o à esquerda e mais a direita
-                possivel neste caso o -1
-                    */
-                        //PNR
-            pNohArvore preNewRoot = raiz->esquerda;
-            pNohArvore newRoot = preNewRoot;
-
-            while (newRoot->direita != NULL) {
-                preNewRoot = newRoot;
-                newRoot = newRoot->direita;
-            }
-
-            if ( newRoot != preNewRoot && newRoot->esquerda != NULL ) {
+                //caso o nó mais proximo da raiz nao seja uma folha
+            if ( newRoot != NULL)
                 preNewRoot->direita = newRoot->esquerda;
-                newRoot->direita = raiz->direita;
-                newRoot->esquerda = raiz->esquerda;
-            }
+            else
+                preNewRoot->direita = NULL;
 
-            if( newRoot == preNewRoot) {
-                newRoot->direita = raiz->direita;
-            }
-            /*
-            //para teste
-            printf("\npreNewRoot: ");
-            printaInt(preNewRoot->info);
-            printf("NewRoot: ");
-            printaInt(newRoot->info);
-            printf("raiz: ");
-            printaInt(raiz->info);
-            printf("\n");
-            */
+                //faco que meu newNoh aponte para os mesmos Nohs da raiz
+            newRoot->direita = raiz->direita;
+            newRoot->esquerda = raiz->esquerda;
+
+                //tiro as ligacoes da raiz com o resto da arvore para limpar adequadamente
             raiz->direita = NULL;
             raiz->esquerda = NULL;
-            free(raiz);
+            freeNoh(raiz);
 
             return newRoot;
 
+
         }
+        else if ( raiz->direita != NULL ) {
 
-        // caso 2: é uma raiz com 1 filho
-        else if (raiz->direita != NULL && raiz->esquerda == NULL) {
-                    /*
-                    desc
-                     |
-                      0
-                    /   \
-                  -5     1
-                  / \     \
-                -6  -3     2 <- esse por exemplo
-                    / \     \
-                  -4  -1     3
-                       /
-                      -2
-
-                    */
+                //Faz com que o codigo retorne a parna direita da raiz e garanta que a raiz seja adequadamente liberada
             pNohArvore aux = raiz->direita;
             raiz->direita = NULL;
-            freeNoh(raiz);
-            return aux;
-
-        }
-
-        // caso 2: é uma raiz com 1 filho
-        else if (raiz->direita == NULL && raiz->esquerda != NULL) {
-                     /*
-                    desc
-                     |
-                      0
-                    /   \
-                  -5     1
-                  / \     \
-                -6  -3     2 - 3
-                    / \
-                  -4  -1 <- esse por exemplo
-                       /
-                      -2
-
-                    */
-            pNohArvore aux = raiz->esquerda;
             raiz->esquerda = NULL;
             freeNoh(raiz);
+
             return aux;
         }
+        else if ( raiz->esquerda != NULL ) {
+            printf("\nfilho a esquerda");
 
-        else { printf("ERRO GRAVE!!!!");}
+              //Faz com que o codigo retorne a parna esquerda da raiz e garanta que a raiz seja adequadamente liberada
+            pNohArvore aux = raiz->esquerda;
+            raiz->direita = NULL;
+            raiz->esquerda = NULL;
+            freeNoh(raiz);
+
+            return aux;
+        }
     }
 
-    return raiz;
+  return raiz;
 }
+
 
 int removeInfo(pDArvore arvore, void* info, FuncaoComparacao fcp) {
     if ( findBy(arvore, info, fcp) == NULL) {
+            printf("nao achou");
         return 0;
     } else {
         arvore->raiz = removeInfoRecursivo(arvore->raiz, info, fcp);
@@ -275,6 +198,15 @@ int removeInfo(pDArvore arvore, void* info, FuncaoComparacao fcp) {
         return 1;
     }
 }
+
+pNohArvore preMaxNoh(pNohArvore raiz) {
+    pNohArvore aux = raiz->esquerda;
+    while ( aux->direita->direita != NULL) {
+        aux = aux->direita;
+    }
+    return aux;
+}
+
 // ---------------------- FindBy ----------------------------------------------------
 
 pNohArvore proxLeaf(pNohArvore raiz, void* info, FuncaoComparacao fcp) {

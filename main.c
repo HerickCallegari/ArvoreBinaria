@@ -14,22 +14,18 @@ int main()
     incluirInfo(desc,alocaInt(i),ComInt);
     }
     */
-    incluirInfo(desc,alocaInt(0),ComInt);
-    incluirInfo(desc,alocaInt(1),ComInt);
-    incluirInfo(desc,alocaInt(2),ComInt);
-    incluirInfo(desc,alocaInt(3),ComInt);
-    incluirInfo(desc,alocaInt(-5),ComInt);
-    incluirInfo(desc,alocaInt(-6),ComInt);
-    incluirInfo(desc,alocaInt(-3),ComInt);
-    incluirInfo(desc,alocaInt(-4),ComInt);
-    incluirInfo(desc,alocaInt(-1),ComInt);
-    incluirInfo(desc,alocaInt(-2),ComInt);
+    incluirInfo(desc, alocaInt(150), CompInt);
+    incluirInfo(desc, alocaInt(100), CompInt);
+    incluirInfo(desc, alocaInt(200), CompInt);
+    incluirInfo(desc, alocaInt(99), CompInt);
+    incluirInfo(desc, alocaInt(110), CompInt);
+    incluirInfo(desc, alocaInt(109), CompInt);
+    incluirInfo(desc, alocaInt(98), CompInt);
 
 
 
 
-    printf("\nFoi possivel fazer a operacao: %d\n",removeInfo(desc, alocaInt(1), ComInt));
-    printf("\nFoi possivel fazer a operacao: %d\n",removeInfo(desc, alocaInt(2), ComInt));
+    printf("\nFoi possivel fazer a operacao: %d\n",removeInfo(desc, alocaInt(110), CompInt));
     printf("\nQuantidade de noh: %d\n", desc->quantidade);
     printf("\n");
 
